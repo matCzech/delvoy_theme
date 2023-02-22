@@ -28,9 +28,6 @@
         <div class="entry-excerpt">
             <?php the_excerpt(); ?>
         </div>
-        <div class="button-container text-center">
-            <a href="<?php the_permalink(); ?>" class="btn btn-delvoy"><?php _e('Read more'); ?></a>
-        </div>
     </div><!--entry-content-->
 
 
