@@ -7,3 +7,4 @@ require get_template_directory() . '/inc/custom-delete-comments.php';
 require get_template_directory() . '/inc/walker.php';
 require get_template_directory() . '/inc/custom-fields.php';
 require get_template_directory() . '/inc/shortcodes.php';
+require get_template_directory() . '/inc/register-sidebars.php';

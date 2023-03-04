@@ -13,7 +13,8 @@ add_action( 'add_meta_boxes', 'custom_add_custom_fields' );
 function custom_render_background_image_meta_box( $post ) {
     wp_nonce_field( basename( __FILE__ ), 'custom_nonce' );
     $bg_image = get_post_meta( $post->ID, '_custom_background_image', true );
-    $h2_title = get_post_meta( $post->ID, '_custom_h2_title', true );
+    $h2_title_slim = get_post_meta( $post->ID, '_custom_h2_title_slim', true );
+    $h2_title_bold = get_post_meta( $post->ID, '_custom_h2_title_bold', true );
     $h3_title = get_post_meta( $post->ID, '_custom_h3_title', true );
     
     echo '<label for="custom_background_image">' . __( 'Background Image', 'textdomain' ) . '</label> ';
@@ -22,9 +23,14 @@ function custom_render_background_image_meta_box( $post ) {
     echo '<input type="button" class="button custom_media_button" value="' . __( 'Media Library', 'textdomain' ) . '" data-uploader_title="' . __( 'Choose an image', 'textdomain' ) . '" data-uploader_button_text="' . __( 'Use this image', 'textdomain' ) . '">';
     echo '</div>';
     
-    echo '<label for="custom_h2_title">' . __( 'H2 Title', 'textdomain' ) . '</label> ';
+    echo '<label for="custom_h2_title">' . __( 'H2 Title slim', 'textdomain' ) . '</label> ';
     echo '<div>';
-    echo '<input type="text" id="custom_h2_title" name="custom_h2_title" value="' . esc_attr( $h2_title ) . '" size="25" />';
+    echo '<input type="text" id="custom_h2_title_slim" name="custom_h2_title_slim" value="' . esc_attr( $h2_title_slim ) . '" size="25" />';
+    echo '</div>';
+
+    echo '<label for="custom_h2_title">' . __( 'H2 Title bold', 'textdomain' ) . '</label> ';
+    echo '<div>';
+    echo '<input type="text" id="custom_h2_title_bold" name="custom_h2_title_bold" value="' . esc_attr( $h2_title_bold ) . '" size="25" />';
     echo '</div>';
     
     echo '<label for="custom_h3_title">' . __( 'H3 Title', 'textdomain' ) . '</label> ';
@@ -41,11 +47,13 @@ function custom_save_custom_fields( $post_id ) {
     }
     
     $bg_image = isset( $_POST['custom_background_image'] ) ? sanitize_text_field( $_POST['custom_background_image'] ) : '';
-    $h2_title = isset( $_POST['custom_h2_title'] ) ? sanitize_text_field( $_POST['custom_h2_title'] ) : '';
+    $h2_title_slim = isset( $_POST['custom_h2_title_slim'] ) ? sanitize_text_field( $_POST['custom_h2_title_slim'] ) : '';
+    $h2_title_bold = isset( $_POST['custom_h2_title_bold'] ) ? sanitize_text_field( $_POST['custom_h2_title_bold'] ) : '';
     $h3_title = isset( $_POST['custom_h3_title'] ) ? sanitize_text_field( $_POST['custom_h3_title'] ) : '';
     
     update_post_meta( $post_id, '_custom_background_image', $bg_image );
-    update_post_meta( $post_id, '_custom_h2_title', $h2_title );
+    update_post_meta( $post_id, '_custom_h2_title_slim', $h2_title_slim );
+    update_post_meta( $post_id, '_custom_h2_title_bold', $h2_title_bold );
     update_post_meta( $post_id, '_custom_h3_title', $h3_title );
 }
 add_action( 'save_post', 'custom_save_custom_fields' );
