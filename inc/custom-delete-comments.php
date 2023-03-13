@@ -1,5 +1,7 @@
 <?php
 
+defined ('ABSPATH') or die();
+
 add_action('admin_init', function () {
     // Redirect any user trying to access comments page
     global $pagenow;

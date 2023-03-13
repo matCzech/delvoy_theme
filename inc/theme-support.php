@@ -1,5 +1,7 @@
 <?php
 
+defined ('ABSPATH') or die();
+
 /*
 @package delvoy_aless_thm
     Theme support

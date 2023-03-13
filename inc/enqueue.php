@@ -5,6 +5,8 @@
     Admin Page
 */
 
+defined ('ABSPATH') or die();
+
 /*
 #########################################################
                 ADMIN ENQUEUE FUNCTIONS

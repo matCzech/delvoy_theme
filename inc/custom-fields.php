@@ -1,4 +1,6 @@
 <?php
+defined ('ABSPATH') or die();
+
 /*Custom fields and save - remember to add new custom save after a new custom fields*/
 
 /*Hero image - homepage*/

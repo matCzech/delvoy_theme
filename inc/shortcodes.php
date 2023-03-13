@@ -1,5 +1,7 @@
 <?php
 
+defined ('ABSPATH') or die();
+
 /*Hero image - homepage*/
 function hero_shortcode() {
     ob_start();
