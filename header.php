@@ -21,6 +21,8 @@
     </head>
 
     <body <?php body_class(); ?>>
+        <h1><span class="d-none"><?php bloginfo('name'); ?></span></h1>
+        <?php wp_body_open(); ?>
         <header id="masthead" class="site-header">
             <div class="container-md">
                 <div class="row align-items-center">

@@ -17,12 +17,12 @@ defined ('ABSPATH') or die();
 function delvoy_load_admin_scripts($hook){
     if('toplevel_page_delvoy_aless' == $hook){
 
-        wp_register_style('delvoy-admin', get_template_directory_uri() . '/css/delvoy.admin.css', array(), '1.0.0', 'all');
+        wp_register_style('delvoy-admin', get_template_directory_uri() . '/css/delvoy.admin.css', array(), filemtime(get_template_directory().'/css/delvoy.admin.css'), 'all');
         wp_enqueue_style('delvoy-admin');
 
         wp_enqueue_media();
 
-        wp_register_script('delvoy-admin-script', get_template_directory_uri() . '/js/delvoy.admin.js', array('jquery'), '1.0.0', true);
+        wp_register_script('delvoy-admin-script', get_template_directory_uri() . '/js/delvoy.admin.js', array('jquery'), filemtime(get_template_directory().'/js/delvoy.admin.js'), true);
         wp_enqueue_script('delvoy-admin-script');
 
     }
@@ -54,3 +54,27 @@ function delvoy_load_scripts(){
     wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '5.1.3', true);
 }
 add_action('wp_enqueue_scripts', 'delvoy_load_scripts');
+
+
+
+/*
+#########################################################
+                CONDITIONAL EQUEUES  !check proper slug and script id!
+#########################################################
+*/
+
+/*
+function remove_CF7_js(){
+    if(!is_page('contact-us')){
+        wp_deregister_script('contact-form-7');
+    }
+}
+add_action('wp_print_scripts', 'remove_CF7_js');
+
+function remove_CF7_css(){
+    if(!is_page('contact-us')){
+        wp_deregister_style('contact-form-7');
+    }
+}
+add_action('wp_print_styles', 'remove_CF7_css');
+*/
